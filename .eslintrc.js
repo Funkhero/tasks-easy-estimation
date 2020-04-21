@@ -25,10 +25,11 @@ module.exports = {
     'no-useless-escape': 'off',
     'no-console': 'off',
     'radix': 'off',
+    'indent': [2, 'tab'],
+    'no-tabs': 0,
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-closing-bracket-spacing': 'off',
     'vue/no-v-html': 'off',
   }
 }
-
