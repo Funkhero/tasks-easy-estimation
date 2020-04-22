@@ -2,6 +2,10 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
   extends: [
     'airbnb-base',
     'plugin:vue/recommended'
@@ -20,16 +24,16 @@ module.exports = {
     'import/no-unresolved': 'off',
     'max-len': 'off',
     'no-param-reassign': 'off',
+    'no-trailing-spaces': 'off',
+    'class-methods-use-this': 'off',
     'no-plusplus': 'off',
     'no-underscore-dangle': 'off',
     'no-useless-escape': 'off',
     'no-console': 'off',
     'radix': 'off',
-    'indent': [2, 'tab'],
-    'no-tabs': 0,
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-closing-bracket-spacing': 'off',
     'vue/no-v-html': 'off',
   }
-}
+};
