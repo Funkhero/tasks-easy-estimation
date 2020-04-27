@@ -18,5 +18,5 @@ module.exports = {
   optimization: optimization(),
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-  ]
+  ],
 };

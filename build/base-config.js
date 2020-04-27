@@ -6,7 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = (isDev) => {
-  const filename = ext => isDev ? `[name].[hash].${ext}` : `[name].${ext}`;
+  const filename = (ext) => (isDev ? `[name].[hash].${ext}` : `[name].${ext}`);
   
   const jsLoaders = () => {
     const loaders = [
@@ -20,27 +20,27 @@ module.exports = (isDev) => {
     ];
     
     if (isDev) {
-      loaders.push('eslint-loader')
+      loaders.push('eslint-loader');
     }
     
     return loaders;
   };
   
-  const cssLoaders = extra => {
+  const cssLoaders = (extra) => {
     const loaders = [
       'vue-style-loader',
       {
         loader: MiniCssExtractPlugin.loader,
         options: {
           hmr: isDev,
-          reloadAll: true
+          reloadAll: true,
         },
       },
-      'css-loader'
+      'css-loader',
     ];
     
     if (extra) {
-      loaders.push(extra)
+      loaders.push(extra);
     }
     
     return loaders;
@@ -111,5 +111,5 @@ module.exports = (isDev) => {
         },
       ],
     },
-  }
+  };
 };
