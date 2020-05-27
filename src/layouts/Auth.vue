@@ -1,9 +1,11 @@
 <template>
-  <div class="layout layout_type_auth"></div>
+  <div class="layout layout_type_auth">
+    <slot/>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Auth',
+  name: 'LayoutAuth',
 };
 </script>

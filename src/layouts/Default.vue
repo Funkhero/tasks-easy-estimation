@@ -1,9 +1,20 @@
 <template>
-  <div class="layout layout_type_default"></div>
+  <div class="layout layout_type_default">
+    <page-header/>
+    <slot/>
+    <page-footer/>
+  </div>
 </template>
 
 <script>
+import PageHeader from '../components/layout/header';
+import PageFooter from '../components/layout/footer';
+
 export default {
-  name: 'Default',
+  name: 'LayoutDefault',
+  components: {
+    PageHeader,
+    PageFooter,
+  },
 };
 </script>

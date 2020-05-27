@@ -1,9 +1,11 @@
 <template>
-  <div class="layout layout_type_error"></div>
+  <div class="layout layout_type_error">
+    <slot/>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Error',
+  name: 'LayoutError',
 };
 </script>

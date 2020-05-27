@@ -79,14 +79,14 @@ module.exports = (isDev) => {
         },
       }),
       new MiniCssExtractPlugin({
-        filename: filename('css')
+        filename: filename('css'),
       }),
     ],
     module: {
       rules: [
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          loader: 'vue-loader',
         },
         {
           test: /\.js$/,
@@ -103,7 +103,7 @@ module.exports = (isDev) => {
         },
         {
           test: /\.(png|jpg|svg|gif)$/,
-          use: ['file-loader']
+          use: ['file-loader'],
         },
         {
           test: /\.(woff2?|eot|ttf|otf)$/,
