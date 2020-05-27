@@ -5,16 +5,11 @@
 </template>
 
 <script>
-import Room from './_Room';
-import List from './_List';
+import Room from './Room';
+import List from './List';
 
 export default {
   name: 'Assessment',
-  routeName: 'assessment',
-  routes: [
-    { name: 'list', path: '', component: List },
-    { name: 'room', path: 'room', component: Room },
-  ],
 };
 </script>
 
