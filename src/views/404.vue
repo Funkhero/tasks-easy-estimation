@@ -5,6 +5,9 @@
 <script>
 export default {
   name: 'NotFoundPage',
+  routeMeta: {
+    layout: 'Error',
+  },
 };
 </script>
 
