@@ -52,8 +52,9 @@ module.exports = (isDev) => {
       app: './app.js',
     },
     output: {
-      filename: filename('js'),
       path: path.resolve(__dirname, '../dist'),
+      publicPath: '/',
+      filename: filename('js'),
     },
     optimization: {
       splitChunks: {

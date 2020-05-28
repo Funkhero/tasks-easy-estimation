@@ -1,0 +1,18 @@
+@import "reset-css";
+@import "_colors";
+@import "_fonts";
+
+.layout {
+  color: $text;
+  display: flex;
+  flex-direction: column;
+  font-family: "OpenSans", sans-serif;
+  font-size: 13px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
