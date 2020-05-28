@@ -6,15 +6,18 @@
 
 <script>
 import LayoutDefault from './layouts/Default';
+import LayoutError from './layouts/Error';
 
 export default {
   name: 'App',
   components: {
     LayoutDefault,
+    LayoutError,
   },
   computed: {
     layout() {
-      return 'layoutDefault';
+      const routeWithLayout = this.$route.matched.find((route) => !!route.meta.layout);
+      return routeWithLayout ? `layout${routeWithLayout.meta.layout}` : 'layoutDefault';
     },
   },
 };

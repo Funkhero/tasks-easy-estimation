@@ -1,13 +1,12 @@
 <template>
   <div class="assessment">
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
-import Room from './Room';
-import List from './List';
-
 export default {
   name: 'Assessment',
 };
