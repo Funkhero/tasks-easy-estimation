@@ -1,7 +1,9 @@
 <template>
   <div class="layout layout_type_default">
     <page-header/>
-    <slot/>
+    <section class="container layout__body">
+      <slot/>
+    </section>
     <page-footer/>
   </div>
 </template>

@@ -7,12 +7,14 @@
 <script>
 import LayoutDefault from './layouts/Default';
 import LayoutError from './layouts/Error';
+import LayoutRoom from './layouts/Room';
 
 export default {
   name: 'App',
   components: {
     LayoutDefault,
     LayoutError,
+    LayoutRoom,
   },
   computed: {
     layout() {

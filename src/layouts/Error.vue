@@ -1,6 +1,8 @@
 <template>
   <div class="layout layout_type_error">
-    <slot/>
+    <div class="container">
+      <slot/>
+    </div>
   </div>
 </template>
 

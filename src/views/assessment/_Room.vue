@@ -6,6 +6,9 @@
 export default {
   name: 'AssessmentsRoom',
   routePath: ':id',
+  meta: {
+    layout: 'Room',
+  },
 };
 </script>
 

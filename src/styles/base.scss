@@ -10,9 +10,26 @@
   font-size: 13px;
   min-height: 100vh;
   position: relative;
+  &__body {
+    flex-grow: 1;
+    padding: 15px 0;
+    display: flex;
+  }
+  &__aside {
+    margin-right: 30px;
+    width: 300px;
+  }
+  &__main {
+    flex-grow: 1;
+    width: 940px;
+  }
 }
 
 .container {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
 }
+
+
