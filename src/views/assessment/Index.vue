@@ -1,24 +1,24 @@
 <template>
   <div class="assessment">
-    <div class="container">
-      <router-view/>
-    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Room from './_Room';
-import List from './_List';
+import Room from '@/views/assessment/_Room';
+import List from '@/views/assessment/_List';
 
 export default {
   name: 'Assessment',
   routeName: 'assessment',
   routes: [
     { name: 'assessments-list', path: '', component: List },
-    { name: 'assessments-room', path: 'room/:id', component: Room },
+    {
+      name: 'assessments-room',
+      path: 'room/:id',
+      component: Room,
+      meta: { layout: 'Room' },
+    },
   ],
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

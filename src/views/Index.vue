@@ -1,5 +1,7 @@
 <template>
-  <div class="sign-in">Main page</div>
+  <div class="main-page">
+    <h3>Main page</h3>
+  </div>
 </template>
 
 <script>

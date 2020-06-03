@@ -64,9 +64,9 @@ module.exports = (isDev) => {
     resolve: {
       extensions: ['.js', '.vue'],
       alias: {
-        '@': path.resolve(__dirname, 'src'),
-        '@img': path.resolve(__dirname, 'assets/img'),
-        '@icons': path.resolve(__dirname, 'assets/icons'),
+        '@': path.resolve(__dirname, '../src'),
+        '@img': path.resolve(__dirname, '../assets/img'),
+        '@icons': path.resolve(__dirname, '../assets/icons'),
       },
     },
     plugins: [
@@ -100,7 +100,12 @@ module.exports = (isDev) => {
         },
         {
           test: /\.s[ac]ss$/,
-          use: cssLoaders('sass-loader'),
+          use: cssLoaders({
+            loader: 'sass-loader',
+            options: {
+              prependData: '@import "~@/styles/_colors.scss";',
+            },
+          }),
         },
         {
           test: /\.(png|jpg|svg|gif)$/,

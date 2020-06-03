@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import { requireAll } from './utilities/index';
+import { requireAll } from '@/utilities';
 
 Vue.use(Router);
 
@@ -24,7 +24,7 @@ function registerRoute(path, component) {
   } else {
     if (route.path === '') route.path = '/';
     if (component.routes) route.children = component.routes;
-    console.log(component);
+
     route.props = component.routeProps === undefined ? true : component.routeProps;
 
     routes.push(route);

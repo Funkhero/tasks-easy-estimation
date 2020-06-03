@@ -3,10 +3,16 @@
     v-if="component"
     :class="windowClassArray"
     class="modal-window"
-    @click="onClick"
   >
+    <div
+      class="modal-window__wrapper"
+      @click="close()"
+    />
     <slot name="before"/>
-    <div class="modal-container">
+    <div
+      class="modal-container"
+      :class="containerClassArray"
+    >
       <component
         :is="component"
         v-bind="componentProps"
@@ -17,7 +23,7 @@
       </component>
       <slot name="container-inner"/>
     </div>
-    <slot name="before"/>
+    <slot name="after"/>
   </div>
 </template>
 
@@ -52,13 +58,13 @@ export default {
   computed: {
     windowClassArray() {
       const arr = [];
-      if (this.component) arr.push(`modal-window-${dashedCase(this.component.name)}`);
+      if (this.component) arr.push(`modal-window-${dashedCase(this.component)}`);
       if (this.modalClass) arr.push(`modal-window-${this.modalClass}`);
       return arr;
     },
     containerClassArray() {
       const arr = [];
-      if (this.component) arr.push(`modal-container-${dashedCase(this.component.name)}`);
+      if (this.component) arr.push(`modal-container-${dashedCase(this.component)}`);
       if (this.modalClass) arr.push(`modal-container-${this.modalClass}`);
       return arr;
     },
@@ -96,12 +102,72 @@ export default {
         this.$emit('closed', result);
       });
     },
-    onClick(event) {
-      if (event.target === this.$el) this.close();
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+  .modal-window {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    overflow-y: auto;
+    z-index: 99;
+    text-align: center;
+    &__wrapper {
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 99;
+      background: rgba(grey, .8);
+    }
+    &:before {
+      content:'';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .modal-container {
+    position: relative;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    min-height: 200px;
+    min-width: 300px;
+    max-width: 500px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    z-index: 100;
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  .modal-enter-active {
+    transition: opacity .25s ease-out;
+    opacity: 1;
+    .modal-container {
+      transition: transform .25s ease-out;
+      transform: none;
+    }
+  }
+
+
+   .modal-enter {
+     opacity: 0;
+     .modal-container {
+       transform: translateY(-40px) scale(.9);
+     }
+   }
 </style>

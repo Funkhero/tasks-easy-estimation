@@ -5,7 +5,12 @@
         <span class="header__logo"/>
       </div>
       <div class="header__right">
-        <button class="header__start">Start it now</button>
+        <t-button
+          class="header__start"
+          @click="$modal.open('test')"
+        >
+          Start it now
+        </t-button>
       </div>
     </div>
   </header>

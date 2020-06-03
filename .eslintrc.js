@@ -31,6 +31,7 @@ module.exports = {
     'no-useless-escape': 'off',
     'no-console': 'off',
     'radix': 'off',
+    'func-names': 'off',
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-closing-bracket-spacing': 'off',

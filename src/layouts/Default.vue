@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import PageHeader from '../components/layout/header';
-import PageFooter from '../components/layout/footer';
+import PageHeader from '@/components/layout/header';
+import PageFooter from '@/components/layout/footer';
 
 export default {
   name: 'LayoutDefault',
