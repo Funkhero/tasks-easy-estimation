@@ -7,6 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = (isDev) => {
   const filename = (ext) => (isDev ? `[name].[hash].${ext}` : `[name].${ext}`);
+  const svgSpriteRegex = /assets[\\/]sprite\.svg$/;
   
   const jsLoaders = () => {
     const loaders = [
@@ -62,7 +63,7 @@ module.exports = (isDev) => {
       },
     },
     resolve: {
-      extensions: ['.js', '.vue'],
+      extensions: ['.js', '.vue', '.svg'],
       alias: {
         '@': path.resolve(__dirname, '../src'),
         '@img': path.resolve(__dirname, '../assets/img'),
@@ -109,11 +110,16 @@ module.exports = (isDev) => {
         },
         {
           test: /\.(png|jpg|svg|gif)$/,
+          exclude: svgSpriteRegex,
           use: ['file-loader'],
         },
         {
           test: /\.(woff2?|eot|ttf|otf)$/,
           use: 'file-loader',
+        },
+        {
+          test: svgSpriteRegex,
+          loader: 'raw-loader',
         },
       ],
     },

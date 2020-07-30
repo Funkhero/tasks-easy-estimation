@@ -25,3 +25,5 @@ node_modules/
 vue-dist/
 local.Dockerfile
 npm-debug.log
+
+/assets/sprite.svg

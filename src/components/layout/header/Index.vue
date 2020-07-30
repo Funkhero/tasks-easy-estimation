@@ -2,7 +2,9 @@
   <header class="header">
     <div class="container header__container">
       <div class="header__left">
-        <span class="header__logo"/>
+        <router-link to="/">
+          <div class="header__logo"/>
+        </router-link>
       </div>
       <div class="header__right">
         <t-button
@@ -29,13 +31,18 @@ export default {
       height: 60px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
     &__right {
       display: flex;
       justify-content: flex-end;
     }
     &__logo {
+      width: 80px;
+      height: 40px;
       display: inline-block;
+      background-size: contain;
+      background-image: url('~@img/logo.svg');
     }
   }
 </style>
