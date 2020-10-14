@@ -2,9 +2,9 @@
   <header class="header">
     <div class="container header__container">
       <div class="header__left">
-        <router-link to="/">
+        <t-link>
           <div class="header__logo"/>
-        </router-link>
+        </t-link>
       </div>
       <div class="header__right">
         <t-button

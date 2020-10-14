@@ -170,4 +170,23 @@ export default {
        transform: translateY(-40px) scale(.9);
      }
    }
+
+  .modal-leave-active {
+    transition: opacity .25s ease-out;
+    .modal-container {
+      transition: transform .25s ease-out;
+      transform: translateY(-40px) scale(.9);
+    }
+  }
+
+
+  .modal-leave {
+    opacity: 1;
+    .modal-container {
+      transform: none;
+    }
+    &-to {
+      opacity: 0;
+    }
+  }
 </style>

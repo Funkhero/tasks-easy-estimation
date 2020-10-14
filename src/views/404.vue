@@ -1,5 +1,5 @@
 <template>
-  <div class="sign-in">404 Not Found</div>
+  <div class="not-found">404 Not Found</div>
 </template>
 
 <script>

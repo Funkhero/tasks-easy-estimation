@@ -17,3 +17,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .t-form {
+    &__row {
+      margin-bottom: 20px;
+    }
+  }
+</style>

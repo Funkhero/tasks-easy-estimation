@@ -12,6 +12,7 @@ export function requireAll(requireFile, callback) {
 export function filenameToCamelCase(str, lowerFirst = false) {
   return str
     .replace(/\.[a-z0-9]+$/i, '')
+    .replace(/.*(.\/*.\w{1,})\//, '')
     .replace(/^\.\//, '')
     .split(/[-_/]/)
     .filter((piece) => piece.length)
