@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'TText',
+  name: 'TSelect',
   props: {
     value: {
       type: [String, Number],

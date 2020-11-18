@@ -1,22 +1,28 @@
 <template>
   <div
     :class="inputClasses"
-    class="t-text"
+    class="t-password"
   >
     <input
-      type="text"
+      :type="currentType"
       :name="name"
       :placeholder="placeholder"
-      class="form-input t-text__input"
+      class="form-input t-password__input"
       v-bind="$attrs"
       v-on="inputListeners()"
     >
+    <div
+      class="t-password__eye"
+      @click="toggleType"
+    >
+      <t-icon name="eye"/>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TText',
+  name: 'TPassword',
   props: {
     value: {
       type: [String, Number],
@@ -43,7 +49,7 @@ export default {
     return {
       isFocus: false,
       isFresh: false,
-      isFreshTimeout: null,
+      currentType: 'password',
     };
   },
   computed: {
@@ -59,21 +65,31 @@ export default {
     inputListeners() {
       return { ...this.$listeners, input: this.onInput };
     },
-    onInput({ target }) {
-      const { value } = target;
-
-      if (value === '' && this.value !== null) this.$emit('input', null);
+    toggleType() {
+      this.currentType = this.currentType === 'password' ? 'text' : 'password';
+    },
+    onInput({ target: { value } }) {
+      if (value === '' && this.value != null) this.$emit('input', null);
       else if (value !== this.value) this.$emit('input', value);
-
-      if (target.value !== value) target.value = value;
     },
   },
 };
 </script>
 
 <style lang="scss">
-  .t-text {
+  .t-password {
     position: relative;
     margin-bottom: 12px;
+    &__eye {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      cursor: pointer;
+      .svg-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 </style>

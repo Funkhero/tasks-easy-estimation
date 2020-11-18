@@ -1,6 +1,6 @@
 <template>
   <form
-    class="t-form"
+    class="form t-form"
     @submit.prevent="onSubmit"
   >
     <slot/>

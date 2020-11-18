@@ -8,7 +8,7 @@
       v-html="label"
     />
     <component
-      :is="'field-' + type"
+      :is="'t-' + type"
       v-bind="$attrs"
       :value="value"
       class="t-field__item"
@@ -22,6 +22,10 @@
         :name="name"
       />
     </component>
+    <div
+      class="t-field__error"
+      v-text="error"
+    />
   </div>
 </template>
 
@@ -39,18 +43,6 @@ export default {
       validator(value) {
         return ['text', 'url', 'email', 'password', 'search', 'textarea', 'select'].includes(value);
       },
-    },
-    name: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: null,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
     },
     label: {
       type: String,
@@ -78,14 +70,16 @@ export default {
       return classes;
     },
   },
-  mounted() {
-    this.$el.value = this.value;
-  },
 };
 </script>
 
 <style lang="scss">
   .t-field {
     position: relative;
+    &__label {
+      font-size: 14px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
   }
 </style>
