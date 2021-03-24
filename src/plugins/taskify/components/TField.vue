@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="t-field"
-  >
+  <div class="t-field">
     <div
       class="t-field__label"
       v-html="label"
@@ -12,6 +9,7 @@
       v-bind="$attrs"
       :value="value"
       class="t-field__item"
+      :class="fieldClasses"
       v-on="$listeners"
       @focus="inFocus = true"
       @blur="inFocus = false"
@@ -23,8 +21,9 @@
       />
     </component>
     <div
+      v-if="errors && errors.length"
       class="t-field__error"
-      v-text="error"
+      v-text="errors[0]"
     />
   </div>
 </template>
@@ -48,9 +47,9 @@ export default {
       type: String,
       default: null,
     },
-    error: {
-      type: [String, Object],
-      default: null,
+    errors: {
+      type: [Array, Boolean],
+      default: false,
     },
     required: {
       type: Boolean,
@@ -67,6 +66,7 @@ export default {
   computed: {
     fieldClasses() {
       const classes = '';
+
       return classes;
     },
   },
@@ -80,6 +80,12 @@ export default {
       font-size: 14px;
       line-height: 1;
       margin-bottom: 12px;
+    }
+    &__error {
+      position: absolute;
+      color: $red;
+      bottom: 4px;
+      right: 0;
     }
   }
 </style>

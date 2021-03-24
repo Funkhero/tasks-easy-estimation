@@ -8,22 +8,14 @@
         @submit="onSubmit"
       >
         <t-field
-          v-model="email"
-          class="auth-page__field"
-          type="text"
+          v-for="(field, key) in formFields"
+          :key="key"
+          v-model="field.value"
+          v-bind="field.props"
+          :errors="field.errors"
           :disabled="loading"
-          label="Email"
-          placeholder="Enter your email"
-          required
-        />
-        <t-field
-          v-model="password"
           class="auth-page__field"
-          type="password"
-          :disabled="loading"
-          label="Password"
-          placeholder="Enter your password"
-          required
+          @blur="validateField(key)"
         />
         <t-button
           type="submit"
@@ -37,21 +29,51 @@
 </template>
 
 <script>
+import {
+  validate,
+  required,
+  length,
+  email,
+} from '@/utilities/validation';
+
 export default {
   name: 'AuthPage',
   routeName: 'auth',
   data() {
     return {
       loading: false,
-      email: null,
-      password: null,
+      formFields: {
+        email: {
+          props: {
+            type: 'text',
+            label: 'Email',
+            placeholder: 'Enter your email',
+            required: true,
+          },
+          value: null,
+          errors: false,
+          validate: (value) => validate([required, length(2, 30), email], value),
+        },
+        password: {
+          props: {
+            type: 'password',
+            label: 'Password',
+            placeholder: 'Enter your password',
+            required: true,
+          },
+          value: null,
+          errors: false,
+          validate: (value) => validate([required, length(3, 15)], value),
+        },
+      },
     };
   },
   methods: {
-    validateForm() {
+    validateField(key) {
+      this.formFields[key].errors = this.formFields[key].validate(this.formFields[key].value);
+      console.log(this.formFields[key].errors);
     },
     onSubmit() {
-      this.validateForm();
     },
   },
 };

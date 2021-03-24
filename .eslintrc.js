@@ -17,6 +17,7 @@ module.exports = {
     'Vuex': true,
   },
   rules: {
+    'no-extra-boolean-cast': 'off',
     'arrow-body-style': 'off',
     'consistent-return': 'off',
     'import/extensions': 'off',
