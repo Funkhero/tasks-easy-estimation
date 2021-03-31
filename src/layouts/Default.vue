@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import PageHeader from '@/components/layout/header';
-import PageFooter from '@/components/layout/footer';
+import PageHeader from '@/components/layout/header/Layout-header.vue';
+import PageFooter from '@/components/layout/footer/Layout-footer.vue';
 
 export default {
   name: 'LayoutDefault',

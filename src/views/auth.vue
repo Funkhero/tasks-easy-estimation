@@ -71,9 +71,21 @@ export default {
   methods: {
     validateField(key) {
       this.formFields[key].errors = this.formFields[key].validate(this.formFields[key].value);
-      console.log(this.formFields[key].errors);
+      return this.formFields[key].errors;
+    },
+    validateForm() {
+      let errors = [];
+      Object.keys(this.formFields).forEach((key) => {
+        const fieldErrors = this.validateField(key);
+        if (fieldErrors?.length) errors = [...errors, ...fieldErrors];
+      });
+      return errors.length === 0;
     },
     onSubmit() {
+      if (!this.validateForm()) return console.log('form invalid');
+
+      console.log('user logged!');
+      this.$router.push('assessment');
     },
   },
 };

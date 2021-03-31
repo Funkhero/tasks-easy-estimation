@@ -10,7 +10,6 @@ module.exports = {
     stats: 'errors-only',
     host: process.env.HOST,
     port: process.env.PORT,
-    hot: true,
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000,

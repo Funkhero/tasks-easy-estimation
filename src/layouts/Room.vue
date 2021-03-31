@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import PageHeader from '@/components/layout/header';
-import PageFooter from '@/components/layout/footer';
-import PageAside from '@/components/layout/aside';
+import PageHeader from '@/components/layout/header/Layout-header.vue';
+import PageFooter from '@/components/layout/footer/Layout-footer.vue';
+import PageAside from '@/components/layout/aside/Layout-aside.vue';
 
 export default {
   name: 'LayoutRoom',

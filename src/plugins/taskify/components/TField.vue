@@ -1,6 +1,7 @@
 <template>
   <div class="t-field">
     <div
+      :class="{'t-field__label_required': required}"
       class="t-field__label"
       v-html="label"
     />
@@ -21,7 +22,7 @@
       />
     </component>
     <div
-      v-if="errors && errors.length"
+      v-if="hasError"
       class="t-field__error"
       v-text="errors[0]"
     />
@@ -64,10 +65,13 @@ export default {
     };
   },
   computed: {
+    hasError() {
+      return this.errors && this.errors.length;
+    },
     fieldClasses() {
-      const classes = '';
-
-      return classes;
+      return {
+        error: this.hasError,
+      };
     },
   },
 };
@@ -80,11 +84,22 @@ export default {
       font-size: 14px;
       line-height: 1;
       margin-bottom: 12px;
+      display: inline-block;
+      &_required {
+        position: relative;
+        &:after {
+          content: '*';
+          color: $red;
+          position: absolute;
+          left: 100%;
+          top: 0;
+        }
+      }
     }
     &__error {
       position: absolute;
       color: $red;
-      bottom: 4px;
+      top: 0;
       right: 0;
     }
   }
