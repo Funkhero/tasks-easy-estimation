@@ -3,90 +3,31 @@
     <div class="auth-page__wrapper">
       <t-title class="auth-page__title">Hello</t-title>
       <p class="auth-page__subtitle">Pls login with your account:</p>
-      <t-form
-        class="auth-page__form"
-        @submit="onSubmit"
-      >
-        <t-field
-          v-for="(field, key) in formFields"
-          :key="key"
-          v-model="field.value"
-          v-bind="field.props"
-          :errors="field.errors"
-          :disabled="loading"
-          class="auth-page__field"
-          @blur="validateField(key)"
+      <div class="auth-page__form">
+        <component
+          :is="currentForm"
+          @form-change="currentForm = $event"
         />
-        <t-button
-          type="submit"
-          class="auth-page__button"
-        >
-          Login
-        </t-button>
-      </t-form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  validate,
-  required,
-  length,
-  email,
-} from '@/utilities/validation';
+import LoginForm from '@/components/auth/login-form.vue';
+import RegistrationForm from '@/components/auth/registratoin-form.vue';
 
 export default {
   name: 'AuthPage',
   routeName: 'auth',
+  components: {
+    LoginForm,
+    RegistrationForm,
+  },
   data() {
     return {
-      loading: false,
-      formFields: {
-        email: {
-          props: {
-            type: 'text',
-            label: 'Email',
-            placeholder: 'Enter your email',
-            required: true,
-          },
-          value: null,
-          errors: false,
-          validate: (value) => validate([required, length(2, 30), email], value),
-        },
-        password: {
-          props: {
-            type: 'password',
-            label: 'Password',
-            placeholder: 'Enter your password',
-            required: true,
-          },
-          value: null,
-          errors: false,
-          validate: (value) => validate([required, length(3, 15)], value),
-        },
-      },
+      currentForm: 'login-form',
     };
-  },
-  methods: {
-    validateField(key) {
-      this.formFields[key].errors = this.formFields[key].validate(this.formFields[key].value);
-      return this.formFields[key].errors;
-    },
-    validateForm() {
-      let errors = [];
-      Object.keys(this.formFields).forEach((key) => {
-        const fieldErrors = this.validateField(key);
-        if (fieldErrors?.length) errors = [...errors, ...fieldErrors];
-      });
-      return errors.length === 0;
-    },
-    onSubmit() {
-      if (!this.validateForm()) return console.log('form invalid');
-
-      console.log('user logged!');
-      this.$router.push('assessment');
-    },
   },
 };
 </script>

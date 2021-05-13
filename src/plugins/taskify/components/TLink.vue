@@ -27,7 +27,7 @@ export default {
   props: {
     url: {
       type: String,
-      default: '/',
+      default: '#',
     },
     type: {
       type: String,
