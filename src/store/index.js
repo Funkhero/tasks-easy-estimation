@@ -12,6 +12,7 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
   reducer: (state) => {
     return {
+      loading: state.loading,
     };
   },
 });
