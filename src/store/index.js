@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 
+import user from './modules/user';
+
 Vue.use(Vuex);
 
 const vuexLocal = new VuexPersistence({
@@ -10,20 +12,28 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
   reducer: (state) => {
     return {
-      assessmentList: state.assessmentList,
     };
   },
 });
 
 const store = new Vuex.Store({
+  modules: {
+    user,
+  },
   state: {
-    assessmentList: [],
+    loading: true,
   },
   mutations: {
+    setItem(state, { name, value }) {
+      state[name] = value;
+    },
   },
   actions: {
   },
   getters: {
+    loading(state) {
+      return state.loading;
+    },
   },
   plugins: [vuexLocal.plugin],
 });
