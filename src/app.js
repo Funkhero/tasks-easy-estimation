@@ -3,6 +3,7 @@ import App from '@/App.vue';
 
 import Modal from '@/plugins/modal';
 import Taskify from '@/plugins/taskify';
+import interceptor from '@/utilities/http/axiosInterceptor';
 
 import '@/styles/base.scss';
 import { filenameToCamelCase, requireAll } from '@/utilities';
@@ -23,6 +24,8 @@ requireAll(require.context('@/components/modals/', true, /\.(vue|js)$/), (compon
 
 Vue.use(Modal);
 Vue.use(Taskify);
+
+interceptor(store);
 
 export default new Vue({
   el: '#app',

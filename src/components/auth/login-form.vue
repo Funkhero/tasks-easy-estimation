@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import {
   validate,
   required,
@@ -64,6 +65,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions('user', [
+      'fetchUserProfile',
+    ]),
     validateField(key) {
       this.formFields[key].errors = this.formFields[key].validate(this.formFields[key].value);
       return this.formFields[key].errors;
@@ -76,11 +80,16 @@ export default {
       });
       return errors.length === 0;
     },
-    onSubmit() {
+    async onSubmit() {
       if (!this.validateForm()) return console.log('form invalid');
 
-      console.log('user logged!');
-      this.$router.push('assessment');
+      try {
+        const res = await this.fetchUserProfile();
+        console.log('user logged!', res);
+        this.$router.push('assessment');
+      } catch (e) {
+        console.log('Login error', e);
+      }
     },
   },
 };

@@ -1,5 +1,7 @@
+import fetch from '@/utilities/http/task-api';
+
 export default {
-  namespace: true,
+  namespaced: true,
   state: {
     profile: null,
   },
@@ -10,7 +12,7 @@ export default {
   },
   actions: {
     async fetchUserProfile({ commit }) {
-      const response = await axios.get('/profile/external/auth/get');
+      const response = await fetch('get', '/profile/external/auth/get');
 
       commit('setItem', {
         item: 'profile',

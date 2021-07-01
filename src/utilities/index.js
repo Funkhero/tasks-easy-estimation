@@ -76,3 +76,38 @@ export function throttle(fn, ms) {
 
   return wrapper;
 }
+
+export const getCookie = (name) => {
+  const replacedName = name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1');
+  const matches = document.cookie.match(new RegExp(`(?:^|; )${replacedName}=([^;]*)`));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+};
+
+export const setCookie = (name, value, options = {}) => {
+  options = {
+    path: '/',
+    ...options,
+  };
+
+  if (options.expires && options.expires.toUTCString) {
+    options.expires = options.expires.toUTCString();
+  }
+
+  let updatedCookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+
+  Object.keys(options).forEach((key) => {
+    updatedCookie += `; ${key}`;
+    const optionValue = options[key];
+    if (optionValue !== true) {
+      updatedCookie += `=${optionValue}`;
+    }
+  });
+
+  document.cookie = updatedCookie;
+};
+
+export const deleteCookie = (name) => {
+  setCookie(name, '', {
+    'max-age': -1,
+  });
+};
