@@ -1,18 +1,18 @@
-import axios from 'axios';
 import { setCookie, deleteCookie } from '@/utilities';
+import http from '.';
 
 export default (store) => {
-  axios.interceptors.request.use((config) => {
+  http.interceptors.request.use((config) => {
     if (store.state.auth.accessToken) {
-      console.log(123);
+      // nothing here
     }
     return config;
   }, (error) => {
-    console.log(error);
+    console.log('interceptors request error', error);
     return Promise.reject(error);
   });
 
-  axios.interceptors.response.use((response) => {
+  http.interceptors.response.use((response) => {
     if (response.data.access_token) {
       const accessToken = response.data.access_token;
       store.commit('auth/setItem', { item: 'accessToken', value: accessToken });
@@ -20,6 +20,7 @@ export default (store) => {
     }
     return response;
   }, (error) => {
+    console.log('interceptors response error', error);
     if (error.response && error.response.status === 401) {
       store.commit('auth/setItem', { item: 'accessToken', value: null });
       deleteCookie('USER_TOKEN');
