@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Funkhero/tasks-assessment.git"
+    "url": "git+https://github.com/Funkhero/tasks-easy-estimation.git"
   },
   "author": "Evgeny Koldin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Funkhero/tasks-assessment/issues"
+    "url": "https://github.com/Funkhero/tasks-easy-estimation/issues"
   },
-  "homepage": "https://github.com/Funkhero/tasks-assessment#readme",
+  "homepage": "https://github.com/Funkhero/tasks-easy-estimation#readme",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.14.3",
