@@ -9,7 +9,7 @@
       <div class="header__right">
         <t-button
           class="header__start"
-          @click="$modal.open('test')"
+          @click="$modal.open('create-estimation')"
         >
           Start it now
         </t-button>

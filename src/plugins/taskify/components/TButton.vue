@@ -1,8 +1,9 @@
 <template>
   <button
-    v-if="type === 'button'"
+    v-if="element === 'button'"
     :class="buttonClasses"
     :disabled="disabled"
+    :type="type"
     class="t-button"
     @click="$emit('click', $event)"
   >
@@ -25,6 +26,10 @@ export default {
   name: 'TButton',
   props: {
     type: {
+      type: String,
+      default: '',
+    },
+    element: {
       type: String,
       default: 'button',
       validator(value) {

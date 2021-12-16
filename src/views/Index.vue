@@ -9,7 +9,7 @@
     <div class="main-page__right-side">
       <t-button
         class="main-page__start-button"
-        type="link"
+        element="link"
         size="big"
         url="estimation"
       >

@@ -41,7 +41,7 @@ export default {
       type: String,
       default: 'text',
       validator(value) {
-        return ['text', 'url', 'email', 'password', 'search', 'textarea', 'select'].includes(value);
+        return ['text', 'file', 'email', 'password', 'search', 'textarea', 'select'].includes(value);
       },
     },
     label: {

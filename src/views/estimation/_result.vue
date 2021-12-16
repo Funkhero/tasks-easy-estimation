@@ -11,19 +11,10 @@
         {{ resultInfo.estimateDate }}
       </li>
     </ul>
-    <h3 class="estimation-result__subtitle">Participants</h3>
-    <ul class="estimation-result__participants-list">
-      <li
-        v-for="participant in resultInfo.participants"
-        :key="participant.id"
-        class="estimation-result__participant"
-      >
-        <participant-item
-          :key="participant.id"
-          :participant="participant"
-        />
-      </li>
-    </ul>
+    <participants-list
+      v-if="resultInfo.participants"
+      :participants="resultInfo.participants"
+    />
     <h3 class="estimation-result__subtitle">Assessment results</h3>
     <table class="estimation-result__table">
       <thead>
@@ -58,12 +49,12 @@
 </template>
 
 <script>
-import ParticipantItem from '@/components/estimation/participant-item';
+import ParticipantsList from '@/components/estimation/participants-list';
 
 export default {
   name: 'AssessmentResult',
   components: {
-    ParticipantItem,
+    ParticipantsList,
   },
   routePath: ':id',
   data() {
@@ -144,17 +135,6 @@ export default {
       }
       span {
         font-weight: 600;
-      }
-    }
-    &__participants-list {
-      display: flex;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-    &__participant {
-      margin-right: 12px;
-      &:last-of-type {
-        margin-right: 0;
       }
     }
     &__table {

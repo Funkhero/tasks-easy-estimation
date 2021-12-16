@@ -4,8 +4,8 @@
     class="t-field-select"
   >
     <select
-      :id="name"
-      :name="name"
+      :id="value"
+      :name="value"
       class="t-field-select__native"
     >
       <option value="1">text</option>
