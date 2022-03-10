@@ -2,15 +2,16 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
-module.exports = (isDev) => {
+module.exports = (isDev, mode) => {
   const filename = (ext) => (isDev ? `[name].[hash].${ext}` : `[name].${ext}`);
   const svgSpriteRegex = /assets[\\/]sprite\.svg$/;
   
   const jsLoaders = () => {
-    const loaders = [
+    return [
       {
         loader: 'babel-loader',
         options: {
@@ -19,24 +20,11 @@ module.exports = (isDev) => {
         },
       },
     ];
-    
-    if (isDev) {
-      loaders.push('eslint-loader');
-    }
-    
-    return loaders;
   };
   
   const cssLoaders = (extra) => {
     const loaders = [
       'vue-style-loader',
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          hmr: isDev,
-          reloadAll: true,
-        },
-      },
       'css-loader',
     ];
     
@@ -49,6 +37,7 @@ module.exports = (isDev) => {
   
   return {
     context: path.resolve(__dirname, '../src'),
+    mode,
     entry: {
       app: './app.js',
     },
@@ -71,6 +60,7 @@ module.exports = (isDev) => {
       },
     },
     plugins: [
+      new ESLintPlugin(),
       new ProgressBarPlugin(),
       new VueLoaderPlugin(),
       new CleanWebpackPlugin(),
@@ -104,17 +94,17 @@ module.exports = (isDev) => {
           use: cssLoaders({
             loader: 'sass-loader',
             options: {
-              prependData: '@import "~@/styles/_colors.scss";',
+              additionalData: '@import "~@/styles/_colors.scss";',
             },
           }),
         },
         {
-          test: /\.(png|jpg|svg|gif)$/,
+          test: /\.(png|jpg|svg|gif)$/i,
           exclude: svgSpriteRegex,
-          use: ['file-loader'],
+          use: 'file-loader',
         },
         {
-          test: /\.(woff2?|eot|ttf|otf)$/,
+          test: /\.(woff2?|eot|ttf|otf)$/i,
           use: 'file-loader',
         },
         {

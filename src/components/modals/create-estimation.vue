@@ -1,6 +1,11 @@
 <template>
   <div class="creation-modal">
-    <h3 class="creation-modal__title">Estimation to create</h3>
+    <t-title
+      size="2"
+      class="creation-modal__title"
+    >
+      Estimation to create
+    </t-title>
     <estimation-creation
       class="creation-modal__form"
     />
@@ -17,3 +22,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .creation-modal {
+    &__title {
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+  }
+</style>

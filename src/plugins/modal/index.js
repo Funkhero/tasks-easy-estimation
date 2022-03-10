@@ -1,4 +1,4 @@
-import ModalComponent, { components } from './components/Index.vue';
+import ModalComponent, { components } from './components';
 import ModalPluginEvents from './events';
 
 export { ModalComponent };

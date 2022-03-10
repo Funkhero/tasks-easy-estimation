@@ -1,7 +1,12 @@
 <template>
   <div class="auth-page">
     <div class="auth-page__wrapper">
-      <t-title class="auth-page__title">Hello</t-title>
+      <t-title
+        size="2"
+        class="auth-page__title"
+      >
+        Hello
+      </t-title>
       <p class="auth-page__subtitle">{{ subtitleText }}:</p>
       <div class="auth-page__form">
         <component

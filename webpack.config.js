@@ -1,11 +1,11 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const baseConf = require('./build/base-config');
 const devConf = require('./build/dev-config');
 const prodConf = require('./build/prod-config');
 
-module.exports = (env) => {
-  console.log('env =', env);
-  const isDev = env === 'development';
+module.exports = (env, options) => {
+  console.log('mode =', options.mode);
+  const isDev = options.mode === 'development';
   const activeConf = isDev ? devConf : prodConf;
-  return merge(baseConf(isDev), activeConf);
+  return merge(baseConf(isDev, options.mode), activeConf);
 };

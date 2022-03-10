@@ -116,6 +116,7 @@ export default {
       margin: 24px 0;
       font-size: 32px;
       font-weight: 600;
+      font-style: normal;
     }
     &__subtitle {
       font-size: 18px;

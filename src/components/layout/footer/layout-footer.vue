@@ -20,7 +20,10 @@
           url="/"
           class="footer__logo-link"
         >
-          <span class="footer__logo"/>
+          <img
+            :src="logo"
+            class="footer__logo"
+          />
         </t-link>
         <p class="footer__copyright">Copyright © 2020 Task Assessment</p>
       </div>
@@ -29,8 +32,15 @@
 </template>
 
 <script>
+import logo from '@img/logo.svg';
+
 export default {
-  name: 'Footer',
+  name: 'FooterLayout',
+  data() {
+    return {
+      logo,
+    };
+  },
 };
 </script>
 
@@ -45,10 +55,7 @@ export default {
     }
     &__logo {
       width: 80px;
-      height: 40px;
       display: inline-block;
-      background-size: contain;
-      background-image: url('~@img/logo.svg');
       margin-bottom: 20px;
     }
     &__right {

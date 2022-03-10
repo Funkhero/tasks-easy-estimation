@@ -9,7 +9,7 @@ import Result from '@/views/estimation/_result';
 import List from '@/views/estimation/_list';
 
 export default {
-  name: 'Estimation',
+  name: 'EstimationView',
   routes: [
     { name: 'estimations-list', path: '', component: List },
     {

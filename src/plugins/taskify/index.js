@@ -1,5 +1,6 @@
 import { requireAll, filenameToCamelCase } from '@/utilities';
 import clickOutside from './directives/clickOutside';
+import './styles/common.scss';
 
 export default {
   install(Vue) {

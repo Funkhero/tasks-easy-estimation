@@ -1,5 +1,5 @@
 <template>
-  <div class="estimation-board"></div>
+  <div class="estimation-board">1234</div>
 </template>
 
 <script>

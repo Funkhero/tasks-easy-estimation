@@ -3,7 +3,10 @@
     <div class="container header__container">
       <div class="header__left">
         <t-link url="/">
-          <div class="header__logo"/>
+          <img
+              :src="logo"
+              class="header__logo"
+          />
         </t-link>
       </div>
       <div class="header__right">
@@ -19,8 +22,15 @@
 </template>
 
 <script>
+import logo from '@img/logo.svg';
+
 export default {
-  name: 'Header',
+  name: 'HeaderLayout',
+  data() {
+    return {
+      logo,
+    };
+  },
 };
 </script>
 
@@ -41,8 +51,6 @@ export default {
       width: 80px;
       height: 40px;
       display: inline-block;
-      background-size: contain;
-      background-image: url('~@img/logo.svg');
     }
   }
 </style>

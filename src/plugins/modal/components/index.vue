@@ -141,7 +141,8 @@ export default {
     padding: 20px;
     min-height: 200px;
     min-width: 300px;
-    max-width: 500px;
+    max-width: 540px;
+    width: 100%;
     border-radius: 4px;
     display: inline-block;
     vertical-align: middle;

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from '@/App.vue';
+import App from '@/app.vue';
 
 import Modal from '@/plugins/modal';
 import Taskify from '@/plugins/taskify';

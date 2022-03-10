@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'Aside',
+  name: 'AsideLayout',
   computed: {
     componentsArray() {
       return {

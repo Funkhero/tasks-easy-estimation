@@ -16,7 +16,4 @@ const optimization = () => {
 
 module.exports = {
   optimization: optimization(),
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-  ],
 };
