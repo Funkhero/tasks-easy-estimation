@@ -52,6 +52,7 @@ export default {
       width: 100%;
       margin: 0 auto;
       padding: 40px;
+      border-radius: 6px;
     }
     &__title {
       margin-bottom: 14px;

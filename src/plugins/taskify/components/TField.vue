@@ -12,8 +12,6 @@
       class="t-field__item"
       :class="fieldClasses"
       v-on="$listeners"
-      @focus="inFocus = true"
-      @blur="inFocus = false"
     >
       <slot
         v-for="(item, name) in $slots"
@@ -34,7 +32,7 @@ export default {
   name: 'TField',
   props: {
     value: {
-      type: [String, Number],
+      type: [String, Number, Array],
       default: null,
     },
     type: {

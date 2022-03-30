@@ -15,7 +15,7 @@
         type="submit"
         class="auth-page__button"
       >
-        Registration
+        Create account
       </t-button>
     </t-form>
     <div class="registration-form__bottom">

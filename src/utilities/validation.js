@@ -14,7 +14,8 @@ export function validate(rules, value) {
 }
 
 export function required(value) {
-  return !!value ? false : 'Required field';
+  const valueToValidate = Array.isArray(value) ? !!value.length : !!value;
+  return valueToValidate ? false : 'Required field';
 }
 
 export function length(min, max) {

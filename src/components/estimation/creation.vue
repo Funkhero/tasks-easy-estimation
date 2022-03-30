@@ -13,6 +13,7 @@
         :disabled="loading"
         class="estimation-creation__field"
         @blur="validateField(key)"
+        @search="searchParticipants"
       />
       <t-button
         type="submit"
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import {
   validate,
   required,
@@ -52,12 +54,15 @@ export default {
           props: {
             type: 'select',
             label: 'Participants',
-            placeholder: '',
+            placeholder: 'Search for participants',
             required: true,
+            multiple: true,
+            searchOutside: true,
+            options: [],
           },
-          value: null,
+          value: [],
           errors: false,
-          validate: (value) => validate(required, value),
+          validate: (value) => validate([required], value),
         },
         tasks: {
           props: {
@@ -68,17 +73,24 @@ export default {
           },
           value: null,
           errors: false,
-          validate: (value) => validate(required, value),
+          validate: (value) => validate([required], value),
         },
       },
     };
   },
   methods: {
+    searchParticipants(value) {
+      console.log('searching... ', value);
+    },
     onSubmit() {
       const result = {
         id: 123,
       };
       this.$router.push(`/estimation/conversation/${result.id}`);
+    },
+    validateField(key) {
+      const validateResult = this.formFields[key].validate(this.formFields[key].value);
+      Vue.set(this.formFields[key], 'errors', validateResult);
     },
   },
 };

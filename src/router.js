@@ -32,7 +32,7 @@ function registerRoute(path, component) {
 }
 
 requireAll(require.context('./views/', true, /^(?:(?!\/?_).)+\.(vue|js)$/), (component, name) => {
-  const filePath = name.substr(1).replace(/(\/Index)?\.[a-zA-Z0-9]+$/, '');
+  const filePath = name.substr(1).replace(/(\/index)?\.[a-zA-Z0-9]+$/, '');
   component.routeFilePath = filePath;
   if (component.routePath) {
     (Array.isArray(component.routePath) ? component.routePath : [component.routePath]).forEach((path) => {
