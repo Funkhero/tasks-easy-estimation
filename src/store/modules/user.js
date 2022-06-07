@@ -1,5 +1,5 @@
-import fetch from '@/utilities/http/task-api';
 import { getCookie } from '@/utilities';
+import { fetchUserProfile } from '@/services';
 
 export default {
   namespaced: true,
@@ -13,8 +13,8 @@ export default {
     },
   },
   actions: {
-    async fetchUserProfile({ commit }) {
-      const response = await fetch('get', '/profile/external/auth/get');
+    async fetchUserProfile({ commit }, id) {
+      const response = await fetchUserProfile(id);
 
       commit('setItem', {
         item: 'profile',

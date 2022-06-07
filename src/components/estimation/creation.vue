@@ -69,6 +69,7 @@ export default {
             type: 'file',
             label: 'Tasks for estimate',
             required: true,
+            multiple: true,
             accept: ['docx', 'doc', 'pdf'],
           },
           value: null,

@@ -4,8 +4,8 @@
       <div class="header__left">
         <t-link url="/">
           <img
-              :src="logo"
-              class="header__logo"
+            :src="logo"
+            class="header__logo"
           />
         </t-link>
       </div>
@@ -30,6 +30,9 @@ export default {
     return {
       logo,
     };
+  },
+  mounted() {
+    this.$modal.open('create-estimation');
   },
 };
 </script>

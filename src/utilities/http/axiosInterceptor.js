@@ -3,7 +3,7 @@ import http from '.';
 
 export default (store) => {
   http.interceptors.request.use((config) => {
-    if (store.state.auth.accessToken) {
+    if (store.state.auth?.accessToken) {
       // nothing here
     }
     return config;
