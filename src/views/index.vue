@@ -16,7 +16,7 @@
         size="big"
         url="estimation"
       >
-        Start it now
+        Get to work
       </t-button>
     </div>
   </div>

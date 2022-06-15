@@ -30,11 +30,13 @@ export default {
     line-height: 1.2;
     &_size {
       &_1 {
-        font-size: 28px;
+        font-size: 36px;
         text-transform: uppercase;
+        font-weight: 700;
       }
       &_2 {
-        font-size: 22px;
+        font-size: 28px;
+        font-weight: 600;
       }
       &_3 {
         font-size: 18px;

@@ -11,6 +11,7 @@
       </div>
       <div class="header__right">
         <t-button
+          v-if="$route.name !== 'auth'"
           class="header__start"
           @click="$modal.open('create-estimation')"
         >
@@ -30,9 +31,6 @@ export default {
     return {
       logo,
     };
-  },
-  mounted() {
-    this.$modal.open('create-estimation');
   },
 };
 </script>

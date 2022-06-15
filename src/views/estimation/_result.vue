@@ -1,6 +1,11 @@
 <template>
   <div class="estimation-result">
-    <h2 class="estimation-result__title">{{ resultInfo.title }}</h2>
+    <t-title
+      size="2"
+      class="estimation-result__title"
+    >
+      {{ resultInfo.title }}
+    </t-title>
     <ul class="estimation-result__info-list">
       <li class="estimation-result__info-item">
         <span>Estimate time:</span>
@@ -69,12 +74,14 @@ export default {
             id: 123,
             name: 'Evgeny',
             role: 'Admin',
+            status: 'offline',
             avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I4duwEh1249AtxMie6leKvSVwU2CUz7ff-pC1Qu=s64-c-mo',
           },
           {
             id: 124,
             name: 'Peter',
             role: 'Developer',
+            status: 'offline',
             avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I4duwEh1249AtxMie6leKvSVwU2CUz7ff-pC1Qu=s64-c-mo',
           },
         ],
@@ -114,9 +121,6 @@ export default {
   .estimation-result {
     &__title {
       margin: 24px 0;
-      font-size: 32px;
-      font-weight: 600;
-      font-style: normal;
     }
     &__subtitle {
       font-size: 18px;

@@ -9,6 +9,7 @@
       >
         <participant-item
           :key="participant.id"
+          :shortcut="shortcut"
           :participant="participant"
         />
       </li>
@@ -28,6 +29,10 @@ export default {
     participants: {
       type: Array,
       required: true,
+    },
+    shortcut: {
+      type: Boolean,
+      default: false,
     },
   },
 };

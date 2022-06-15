@@ -10,7 +10,7 @@
 
 <script>
 import PageHeader from '@/components/layout/header/layout-header.vue';
-import PageFooter from '@/components/layout/footer/Layout-footer.vue';
+import PageFooter from '@/components/layout/footer/layout-footer.vue';
 
 export default {
   name: 'LayoutDefault',

@@ -1,5 +1,5 @@
 <template>
-  <component :is="layout">
+  <div class="app">
     <transition name="modal">
       <modal>
         <button
@@ -12,8 +12,10 @@
         </button>
       </modal>
     </transition>
-    <router-view/>
-  </component>
+    <component :is="layout">
+      <router-view/>
+    </component>
+  </div>
 </template>
 
 <script>

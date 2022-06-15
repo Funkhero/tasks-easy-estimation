@@ -15,8 +15,8 @@
 
 <script>
 import PageHeader from '@/components/layout/header/layout-header.vue';
-import PageFooter from '@/components/layout/footer/Layout-footer.vue';
-import PageAside from '@/components/layout/aside/Layout-aside.vue';
+import PageFooter from '@/components/layout/footer/layout-footer.vue';
+import PageAside from '@/components/layout/aside/layout-aside.vue';
 
 export default {
   name: 'LayoutResult',

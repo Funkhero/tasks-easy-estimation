@@ -6,8 +6,9 @@
           <ul class="footer__list">
             <li class="footer__item">
               <t-link
-                url="auth"
+                v-if="$route.name !== 'auth'"
                 class="footer__link"
+                @click.prevent="$modal.open('create-estimation')"
               >
                 Start it now
               </t-link>
@@ -25,7 +26,7 @@
             class="footer__logo"
           />
         </t-link>
-        <p class="footer__copyright">Copyright © 2020 Task Assessment</p>
+        <p class="footer__copyright">Copyright © 2022 Task Assessment</p>
       </div>
     </div>
   </footer>

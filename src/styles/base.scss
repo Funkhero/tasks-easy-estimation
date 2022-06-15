@@ -14,14 +14,17 @@
   display: flex;
 }
 
-.layout {
+.app {
   color: $text;
-  display: flex;
-  flex-direction: column;
   font-family: "OpenSans", sans-serif;
   font-size: 13px;
-  min-height: 100vh;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
   position: relative;
+  min-height: 100vh;
   &__body {
     flex-grow: 1;
     padding: 15px 0;

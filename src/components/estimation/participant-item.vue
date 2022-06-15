@@ -1,13 +1,23 @@
 <template>
   <div class="participant-item">
     <div class="participant-item__avatar">
-      <img
-        :src="participant.avatar"
-        alt="avatar"
-        class="participant-item__img"
-      >
+      <span
+        v-if="!shortcut"
+        class="participant-item__status"
+        :class="`participant-item__status_${participant.status}`"
+      />
+      <div class="participant-item__avatar-wrap">
+        <img
+          :src="participant.avatar"
+          alt="avatar"
+          class="participant-item__img"
+        >
+      </div>
     </div>
-    <div class="participant-item__info">
+    <div
+      v-if="!shortcut"
+      class="participant-item__info"
+    >
       <div class="participant-item__name">{{ participant.name }}</div>
       <div class="participant-item__role">{{ participant.role }}</div>
     </div>
@@ -22,6 +32,10 @@ export default {
       type: Object,
       required: true,
     },
+    shortcut: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -35,10 +49,27 @@ export default {
     &__avatar {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
       margin-right: 8px;
-      background-color: $yellow;
+      position: relative;
+    }
+    &__avatar-wrap {
       overflow: hidden;
+      border-radius: 50%;
+      background-color: $yellow;
+    }
+    &__status {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      &_online {
+        background-color: $green;
+      }
+      &_offline {
+        background-color: $red;
+      }
     }
     &__img {
       width: 100%;
