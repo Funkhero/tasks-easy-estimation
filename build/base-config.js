@@ -82,8 +82,8 @@ module.exports = (isDev, mode) => {
         },
         {
           test: /\.js$/,
-          exclude: /node_modules/,
           use: jsLoaders(),
+          exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file),
         },
         {
           test: /\.css$/,
@@ -101,15 +101,21 @@ module.exports = (isDev, mode) => {
         {
           test: /\.(png|jpg|svg|gif)$/i,
           exclude: svgSpriteRegex,
-          use: 'file-loader',
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[name].[contenthash:6][ext]',
+          },
         },
         {
           test: /\.(woff2?|eot|ttf|otf)$/i,
-          use: 'file-loader',
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name].[contenthash:6][ext]',
+          },
         },
         {
           test: svgSpriteRegex,
-          loader: 'raw-loader',
+          type: 'asset/source',
         },
       ],
     },

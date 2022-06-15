@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run build:sprite && webpack serve --mode development",
+    "prod": "npm run build && npm start dotenv_config_path=.env.prod",
     "lint": "eslint --ext .js --ext .vue ./src",
-    "build:sprite": "cross-env NODE_ENV=production node build/svg-sprite.js",
+    "start": "cross-env NODE_ENV=production node -r dotenv/config index",
     "build": "npm run lint && npm run build:sprite && npm run build:server",
+    "build:sprite": "cross-env NODE_ENV=production node build/svg-sprite.js",
     "build:server": "cross-env NODE_ENV=production webpack --mode production"
   },
   "repository": {
@@ -22,6 +24,7 @@
   "homepage": "https://github.com/Funkhero/tasks-easy-estimation#readme",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
+    "dotenv": "16.0.0",
     "@babel/core": "^7.17.5",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
@@ -44,18 +47,15 @@
     "eslint-plugin-vue": "^8.5.0",
     "eslint-webpack-plugin": "^3.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "raw-loader": "^4.0.2",
     "sass-loader": "^12.6.0",
     "svg-sprite": "^1.5.4",
     "terser-webpack-plugin": "^5.3.1",
-    "url-loader": "^4.1.1",
     "vue-loader": "^15.9.7",
     "vue-style-loader": "^4.1.3",
     "vue-template-compiler": "^2.6.14",
@@ -67,7 +67,6 @@
   "dependencies": {
     "axios": "^0.26.0",
     "reset-css": "^5.0.1",
-    "vee-validate": "^3.4.6",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
