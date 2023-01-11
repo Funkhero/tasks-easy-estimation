@@ -5,5 +5,7 @@ export function fetchUserProfile(id) {
 }
 
 export function uploadFiles(files) {
-  return fetch('post', '/media/content/upload', { files });
+  const formData = new FormData();
+  formData.append('file', files);
+  return fetch('post', '/media/content/upload', formData);
 }

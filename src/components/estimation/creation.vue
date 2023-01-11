@@ -88,6 +88,7 @@ export default {
         id: 123,
       };
       this.$router.push(`/estimation/conversation/${result.id}`);
+      this.$modal.close();
     },
     validateField(key) {
       const validateResult = this.formFields[key].validate(this.formFields[key].value);

@@ -62,17 +62,17 @@ module.exports = (isDev, mode) => {
     plugins: [
       new ESLintPlugin(),
       new ProgressBarPlugin(),
-      new VueLoaderPlugin(),
       new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: filename('css'),
+      }),
       new HTMLWebpackPlugin({
         template: '../index.html',
         minify: {
           collapseWhitespace: !isDev,
         },
       }),
-      new MiniCssExtractPlugin({
-        filename: filename('css'),
-      }),
+      new VueLoaderPlugin(),
     ],
     module: {
       rules: [
